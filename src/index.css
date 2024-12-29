@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #6f3f8d;
+  --secondary-color: #f03c20;
+  --accent-color: #3ab0ff;
+  --warning-color: #fbbe06;
+  --background-color: #ffffff;
+}
+.bg-primary {
+  color: #12122c;
+  background-color: #ff9b00;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 14px;
+  font-family: "Montserrat", serif;
+  font-weight: 400;
+}
+.btn-primary {
+  @apply bg-primary py-2 px-4;
+}

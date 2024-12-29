@@ -1,0 +1,4 @@
+.home {
+  background-image: url("/home-bg.svg");
+  min-height: 100vh;
+}
