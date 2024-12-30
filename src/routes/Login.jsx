@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 // Header
 
@@ -9,7 +10,7 @@ const Header = () => {
         <img src="/flutterwave-logo.svg"></img>
       </a>
       <div className="flex justify-end">
-        <button type="button" className="btn-primary">
+        <button type="button" className="btn-primary py-2 px-4">
           {" "}
           Create Account{" "}
         </button>
@@ -20,7 +21,7 @@ const Header = () => {
 
 //  Login
 
-const Login = () => {
+const Account = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -32,49 +33,53 @@ const Login = () => {
   };
 
   return (
-    <div className=" bg-background p-8 rounded-lg shadow-md w-96">
-      <h2 className="text-2xl font-bold text-center mb-4">
+    <div className=" bg-background m-[100px] py-8 px-6 rounded-lg  w-[340px]">
+      <h1 className="text-[18px] line font-medium  mb-[20px]">
         Login to your account
-      </h2>
+      </h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700">Email address</label>
+          <label htmlFor="email" className="sr-only"></label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="mt-1 block w-full p-2 border border-gray-300 rounded"
+            placeholder="Email address"
+            className="mt-1  w-full p-2 border border-[#e0e0e0] placeholder-inherit transition-all focus:outline-none focus:border-[#ff9b00]
+             rounded"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Password</label>
+          <label className="sr-only"></label>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="mt-1 block w-full p-2 border border-gray-300 rounded"
+              placeholder="Password"
+              className="mt-1  w-full p-2 border border-[#e0e0e0] placeholder-inherit transition-all focus:outline-none focus:border-[#ff9b00]
+        rounded"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 px-3 text-gray-500"
+              className="absolute inset-y-0 right-0 px-3 "
             >
-              {showPassword ? "Hide" : "Show"}
+              {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
             </button>
           </div>
         </div>
         <button
           type="submit"
-          className="w-full p-2 bg-orange-500 text-white font-bold rounded hover:bg-orange-600"
+          className=" btn-primary w-full py-[7.5px] px-4 text-[18px] font-bold rounded"
         >
           Login
         </button>
       </form>
-      <p className="mt-4 text-center">
-        <a href="#forgot-password" className="text-accent hover:underline">
+      <p className="mt-4">
+        <a href="#forgot-password" className="text-[#576ae6]">
           Forgot password?
         </a>
       </p>
@@ -84,13 +89,16 @@ const Login = () => {
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between font-medium px-8">
+    <footer className="flex justify-between  py-8 font-medium px-8">
       <p>
         Flutterwave Technology Solutions Limited - Licensed by the Central Bank
         of Nigeria
       </p>
       <p>
-        <a href="#privacy-policy">Privacy policy</a> |
+        <a href="#privacy-policy">Privacy policy</a>
+      </p>
+      <p>
+        {" "}
         <a href="#terms" className="">
           Terms and conditions
         </a>
@@ -98,16 +106,16 @@ const Footer = () => {
     </footer>
   );
 };
-function Home() {
+function Login() {
   return (
     <div className="home">
       <Header />
-      <div>
-        <Login />
+      <div className="">
+        <Account />
         <Footer />
       </div>
     </div>
   );
 }
 
-export default Home;
+export default Login;

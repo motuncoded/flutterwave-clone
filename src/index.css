@@ -25,7 +25,8 @@ body {
   font-size: 14px;
   font-family: "Montserrat", serif;
   font-weight: 400;
+  color: #333;
 }
 .btn-primary {
-  @apply bg-primary py-2 px-4;
+  @apply bg-primary;
 }
