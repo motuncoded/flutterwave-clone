@@ -1,10 +1,19 @@
 import { NavLink } from "react-router-dom";
-
+import { useEffect, useState } from "react";
 const Sidebar = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
       role="sidebar"
-      className="relative left-0 top-0 bottom-0 w-[240px] max-w-full bg-[#f4f6f8] z-[100] "
+      style={windowWidth < 768 ? { display: "none" } : {}}
+      className="relative left-0 top-0 bottom-0 w-[240px] max-w-full bg-[#f4f6f8] z-[100] max-sm:"
     >
       <div className="relative overflow-hidden h-[calc(100vh-2px)] p-6">
         <div className="flex justify-center items-center ">
