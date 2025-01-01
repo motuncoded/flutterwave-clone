@@ -5,14 +5,17 @@ import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
 const Header = () => {
   return (
-    <header className="grid grid-cols-2 items-center px-[15px] py-[32px]">
+    <header className="grid grid-cols-2 items-center px-[15px] py-[32px] max-sm:px-[26px]">
       <a href="/">
         <img src="/flutterwave-logo.svg"></img>
       </a>
       <div className="flex justify-end">
-        <button type="button" className="btn-primary py-2 px-4">
+        <button
+          type="button"
+          className="btn-primary py-[6px] px-[14px] tracking-tight"
+        >
           {" "}
-          Create Account{" "}
+          Create account{" "}
         </button>
       </div>
     </header>
@@ -73,7 +76,7 @@ const Account = () => {
         </div>
         <button
           type="submit"
-          className=" btn-primary w-full py-[7.5px] px-4 text-[18px] font-bold rounded"
+          className=" btn-primary w-full py-[10px] px-4 text-[18px] font-extrabold rounded "
         >
           Login
         </button>
@@ -89,7 +92,7 @@ const Account = () => {
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between  py-8 font-medium px-8">
+    <footer className="flex justify-between  py-10 font-medium px-8">
       <p>
         Flutterwave Technology Solutions Limited - Licensed by the Central Bank
         of Nigeria

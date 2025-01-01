@@ -1,6 +1,6 @@
 const OverviewAccount = () => {
   return (
-    <div className="py-[32px] px-[14px] bg-orange-100">
+    <div className="py-[32px] px-[14px] bg-orange-100 w-full">
       <h2 className="font-bold text-xl">Activate the account</h2>
       <div className="bg-white rounded mt-4 -mb-2">
         <div className=" px-6 py-6">
