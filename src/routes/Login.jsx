@@ -92,7 +92,7 @@ const Account = () => {
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between  py-10 font-medium px-8">
+    <footer className="flex justify-between  pt-10 font-medium px-8">
       <p>
         Flutterwave Technology Solutions Limited - Licensed by the Central Bank
         of Nigeria

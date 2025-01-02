@@ -2,7 +2,7 @@ import Days from "./Days";
 import Currency from "./Currency.jsx";
 import PropTypes from "prop-types";
 import AccountGraph from "./AccountGraph.jsx";
-
+import data from "../json/flutterwave_transactions.json";
 const Dates = ({ datee, dateee }) => {
   return (
     <div className=" border border-gray-400 rounded-md font-bold flex items-center divide-x-2">
@@ -14,9 +14,52 @@ const Dates = ({ datee, dateee }) => {
 
 const Total = ({ heading, value }) => {
   return (
-    <div className="space-y-6">
+    <div className="">
       <h3 className=" text-gray-400 py-1">{heading}</h3>
       <h3 className="text-[18px] font-semibold">{value}</h3>
+    </div>
+  );
+};
+const Amount = () => {
+  const totalAmount = data.reduce((sum, data) => sum + data.amount, 0);
+  return (
+    <div className="">
+      <h3 className=" text-gray-400 py-1">Total transactions</h3>
+      <h3 className="text-[18px] font-semibold">NGN {totalAmount}.00</h3>
+    </div>
+  );
+};
+const Revenue = () => {
+  const totalRevenue = data
+    .filter((transaction) => transaction.status === "Success") // Only successful transactions
+    .reduce((sum, transaction) => sum + transaction.amount, 0); // Sum the amounts
+  return (
+    <div className="">
+      <h3 className=" text-gray-400 py-1">Total revenue</h3>
+      <h3 className="text-[18px] font-semibold">NGN {totalRevenue}</h3>
+    </div>
+  );
+};
+
+const Failed = () => {
+  const totalRevenue = data
+    .filter((transaction) => transaction.status === "Failed") // Only successful transactions
+    .reduce((sum, transaction) => sum + transaction.amount, 0); // Sum the amounts
+  return (
+    <div className="">
+      <h3 className=" text-gray-400 py-1">Total failed</h3>
+      <h3 className="text-[18px] font-semibold">NGN {totalRevenue}</h3>
+    </div>
+  );
+};
+const Pending = () => {
+  const totalRevenue = data
+    .filter((transaction) => transaction.status === "Pending") // Only successful transactions
+    .reduce((sum, transaction) => sum + transaction.amount, 0); // Sum the amounts
+  return (
+    <div className="">
+      <h3 className=" text-gray-400 py-1">Total pending</h3>
+      <h3 className="text-[18px] font-semibold">NGN {totalRevenue}</h3>
     </div>
   );
 };
@@ -28,31 +71,31 @@ Total.propTypes = {
 const Overview = () => {
   return (
     <section className="px-4 py-6">
-      <div className="flex justify-between max-sm:flex max-sm:flex-wrap">
-        <div className="flex items-center space-x-4 mb-4">
+      <div className="flex justify-between items-center max-sm:flex max-sm:flex-wrap">
+        <div className="flex items-center space-x-4 mb-8">
           <h2 className="font-bold text-xl">Overview</h2>
           <Currency />
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-4 mb-8">
           <Days />
           <Dates datee="Jun 01 2024" dateee="Jun 08 2024" />
         </div>
       </div>
-      <div
-        className="grid grid-cols-[2fr_1fr] gap-4 border
-      mx-2 mt-6"
-      >
-        <div className="px-4 py-6">
+      <div className="grid grid-cols-[2fr_1fr] place-items-center gap-4 border divide-x-2">
+        <div className="px-4 py-6   ">
           <AccountGraph />
         </div>
-        <div className="flex flex-col justify-center  ">
-          <div className="divide-b-2 space-y-10">
-            <Total heading="Total Value" value="NGN 76, 050.00" />
-            <Total heading="Total Volume" value="1" />
-          </div>
-          <div className="">
-            <Total heading="Total Value" value="NGN 76, 050.00" />
-          </div>
+        <div className="flex flex-col justify-center space-y-6 px-5 py-6 ">
+          <Amount />
+          <Revenue />
+
+          <div className="border"></div>
+          <Failed />
+          <Pending />
+
+          <a href="#" className="text-[#ff9b00] font-bold">
+            See all transactions
+          </a>
         </div>
       </div>
     </section>

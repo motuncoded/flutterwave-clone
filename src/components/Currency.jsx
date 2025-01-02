@@ -28,7 +28,7 @@ function Currency() {
         id="currency"
         value={selectedCurrency}
         onChange={handleChange}
-        className="p-2 border border-gray-400  rounded-md w-[100px] max-w-xs outline-none font-bold"
+        className="p-2 border border-gray-400  rounded-md w-[100px] max-w-xs outline-[#ff9b00] font-bold"
       >
         {currencies.map((currency) => (
           <option key={currency.code} value={currency.code}>

@@ -8,6 +8,7 @@ function Days() {
     { last: "Last 14 Days" },
     { last: "Last 21 Days" },
     { last: "Last 27 Days" },
+    { last: "Last 30 Days" },
   ];
   const handleChange = (event) => {
     setSelectedDays(event.target.value);

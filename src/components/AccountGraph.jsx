@@ -1,20 +1,24 @@
-import { LineChart, Line, CartesianGrid, XAxis, YAxis } from "recharts";
+import { BarChart, CartesianGrid, XAxis, YAxis, Bar } from "recharts";
 import data from "../json/flutterwave_transactions.json";
 
 function AccountGraph() {
+  const filteredData = data.slice(0, 5);
   return (
-    <LineChart
+    <BarChart
       width={900}
-      height={300}
-      data={data}
-      margin={{ top: 5, right: 20, bottom: 5, left: 0, padding: "20px" }}
+      height={350}
+      data={filteredData}
+      barSize={30}
+      margin={{ top: 5, right: 10, bottom: 0, left: 0, padding: "20px" }}
     >
-      <Line type="monotone" dataKey="amount" stroke="#ff9b00" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <CartesianGrid />
+
+      <Bar dataKey="amount" fill="#ff9b00" />
       <XAxis dataKey="date" />
       <YAxis datakey="amount" />
-    </LineChart>
+    </BarChart>
   );
 }
 
 export default AccountGraph;
+("");
