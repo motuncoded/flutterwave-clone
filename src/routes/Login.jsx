@@ -1,18 +1,26 @@
 import { useState } from "react";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 // Header
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/accountsetup");
+  };
+
   return (
-    <header className="grid grid-cols-2 items-center px-[15px] py-[32px] max-sm:px-[26px]">
+    <header className="grid grid-cols-2 items-center px-[26px] py-[32px] ">
       <a href="/">
-        <img src="/flutterwave-logo.svg"></img>
+        <img src="/flutterwave-logo.svg" alt="logo" />
       </a>
       <div className="flex justify-end">
         <button
           type="button"
-          className="btn-primary py-[6px] px-[14px] tracking-tight"
+          className="btn-primary py-[6px] px-[14px] tracking-tight hover:bg-[#cc7c00] "
+          onClick={handleNavigate}
         >
           {" "}
           Create account{" "}
@@ -36,8 +44,8 @@ const Account = () => {
   };
 
   return (
-    <div className=" bg-background m-[100px] py-8 px-6 rounded-lg  w-[340px]">
-      <h1 className="text-[18px] line font-medium  mb-[20px]">
+    <div className=" slideIn bg-background m-[100px] py-8 px-6 rounded-lg  w-[340px] shadow-md max-sm:mx-2 max-sm:my-[75px]">
+      <h1 className="text-[18px] font-medium  mb-[20px]">
         Login to your account
       </h1>
       <form onSubmit={handleSubmit}>
@@ -54,7 +62,7 @@ const Account = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="sr-only"></label>
+          <label htmlFor="password" className="sr-only"></label>
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
@@ -70,13 +78,17 @@ const Account = () => {
               onClick={() => setShowPassword(!showPassword)}
               className="absolute inset-y-0 right-0 px-3 "
             >
-              {showPassword ? <IoEyeOffOutline /> : <IoEyeOutline />}
+              {showPassword ? (
+                <IoEyeOffOutline size="24" />
+              ) : (
+                <IoEyeOutline size="24" />
+              )}
             </button>
           </div>
         </div>
         <button
           type="submit"
-          className=" btn-primary w-full py-[10px] px-4 text-[18px] font-extrabold rounded "
+          className=" btn-primary w-full py-[10px] px-4 text-[18px] font-extrabold rounded hover:bg-[#cc7c00] "
         >
           Login
         </button>
@@ -92,7 +104,7 @@ const Account = () => {
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between  pt-10 font-medium px-8">
+    <footer className=" text-[12px] flex justify-between  py-8 font-medium px-8 max-sm:grid max-sm:grid-cols-[2fr_1fr_1fr] max-sm:place-items-center gap-4">
       <p>
         Flutterwave Technology Solutions Limited - Licensed by the Central Bank
         of Nigeria
@@ -113,7 +125,7 @@ function Login() {
   return (
     <div className="home">
       <Header />
-      <div className="">
+      <div className="max-sm:grid max-sm:place-items-center ">
         <Account />
         <Footer />
       </div>

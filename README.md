@@ -4,7 +4,13 @@
 
 ## Screenshots
 
-<!-- ![Educonect](educonnect-img.png) -->
+#### Register
+
+#### Login Page
+
+![Flutterwave Login Page](./screenshots/Flutterwave-Clone-Login.png)
+
+#### Dashboard
 
 ## Table of Contents
 
