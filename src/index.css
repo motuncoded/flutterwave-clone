@@ -43,11 +43,3 @@ body {
     opacity: 1;
   }
 }
-
-.input-field:focus::before {
-  content: "✓";
-  position: absolute;
-  top: -20px;
-  left: 0;
-  color: #ff9b00;
-}

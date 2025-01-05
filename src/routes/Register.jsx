@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
@@ -29,7 +29,7 @@ const Header = () => {
       <div className="w-full mx-4 max-sm:mx-1">
         <div className="bg-[#b3b3b3] rounded h-[12px] flex items-center">
           <NavLink
-            to="/accountsetup"
+            to="/register"
             className={({ isActive }) =>
               `flex-1 h-[12px] rounded ${
                 isActive ? "bg-[#ff9b00]" : "bg-transparent"
@@ -96,6 +96,18 @@ const AccountSetup = () => {
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedCountry = sessionStorage.getItem("country");
+    const storedAccountType = sessionStorage.getItem("accountType");
+
+    if (storedCountry) {
+      setCountry(storedCountry);
+    }
+
+    if (storedAccountType) {
+      setAccountType(storedAccountType);
+    }
+  }, []);
   const handleValidation = () => {
     const validationErrors = {};
     if (!country) {
@@ -115,6 +127,9 @@ const AccountSetup = () => {
       setErrors(validationErrors); // Set validation errors
     } else {
       setErrors({});
+      sessionStorage.setItem("country", country);
+      sessionStorage.setItem("accountType", accountType);
+
       navigate("/details");
     }
   };

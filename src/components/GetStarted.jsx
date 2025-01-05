@@ -9,7 +9,7 @@ const StartedCards = () => {
       link: "Create payment link",
     },
     {
-      icon: "/lock.svg",
+      icon: "/book.svg",
       heading: "Create and send invoices",
       description:
         "Create a payment link in just a few clicks and share the link with your customers—no code required.",
@@ -17,7 +17,7 @@ const StartedCards = () => {
       link: "Clear invoices",
     },
     {
-      icon: "/lock.svg",
+      icon: "/store.svg",
       heading: "Start selling online",
       description:
         "Create a payment link in just a few clicks and share the link with your customers—no code required.",
@@ -37,7 +37,7 @@ const StartedCards = () => {
             <p className="text-gray-500 mb-4 font-medium leading--[18px]">
               {data.description}
             </p>
-            <button className="border-black border-2 py-1 px-4 w-full font-medium text-black max-xl:w-[200px]">
+            <button className="border-[#121212] border-2 py-1 px-4 w-full font-medium rounded text-[#333] max-xl:w-[200px]">
               {data.link}
             </button>
           </div>

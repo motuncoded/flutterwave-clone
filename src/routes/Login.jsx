@@ -8,7 +8,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/accountsetup");
+    navigate("/register");
   };
 
   return (

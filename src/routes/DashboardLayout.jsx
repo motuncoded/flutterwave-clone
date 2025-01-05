@@ -11,7 +11,15 @@ const DashboardLayout = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const sidebarWidth = windowWidth < 768 ? "0px" : "calc(8.7%)";
+  const sidebarWidth =
+    (windowWidth < 768 && "0px") ||
+    (windowWidth < 900 && "0px") ||
+    (windowWidth > 900 &&
+      "calc(13.45%)" &&
+      windowWidth <= 1200 &&
+      "calc(13.45%)") ||
+    (windowWidth <= 1600 && "calc(8.67%)");
+
   const mainMarginLeft = sidebarWidth; // Use sidebar width for margin-left
 
   return (

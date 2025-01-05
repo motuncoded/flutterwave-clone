@@ -12,14 +12,14 @@ import Payments from "./pages/Payments";
 import Subaccounts from "./pages/Subaccounts";
 import Settings from "./pages/Settings";
 import Details from "./components/Details";
-import AccountSetup from "./components/AccountSetup";
+import Register from "./routes/Register";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/accountsetup" element={<AccountSetup />} />
+      <Route path="/register" element={<Register />} />
       <Route path="/details" element={<Details />} />
 
       <Route path="/dashboard" element={<DashboardLayout />}>

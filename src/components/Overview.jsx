@@ -81,8 +81,12 @@ const Overview = () => {
           <Dates datee="Jun 01 2024" dateee="Jun 08 2024" />
         </div>
       </div>
-      <div className="grid grid-cols-[2fr_1fr] place-items-center gap-4 border divide-x-2">
-        <div className="px-4 py-6   ">
+      <div
+        className="grid grid-cols-[2fr_1fr] place-items-center gap-4 border divide-x-2
+         max-sm:grid-cols-[1fr] max-sm:divide-x-0 max-sm:flex max-sm:flex-wrap
+          max-md:grid-cols-[1fr] max-md:divide-x-0 max-md:flex max-md:flex-wrap  "
+      >
+        <div className="px-4 py-6  w-full max-sm:px-2 max-sm:border-b-2 max-md:px-2 max-md:border-b-2 ">
           <AccountGraph />
         </div>
         <div className="flex flex-col justify-center space-y-6 px-5 py-6 ">

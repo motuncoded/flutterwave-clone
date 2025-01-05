@@ -5,9 +5,8 @@ function Days() {
 
   const days = [
     { last: "Last 7 Days" },
-    { last: "Last 14 Days" },
-    { last: "Last 21 Days" },
-    { last: "Last 27 Days" },
+    { last: "Today" },
+    { last: "Yesterday" },
     { last: "Last 30 Days" },
   ];
   const handleChange = (event) => {

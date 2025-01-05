@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
+
+//Header
 const Header = () => {
-  const [isCancel, setIsCancel] = useState(false); // State to manage modal visibilit
+  const [isCancel, setIsCancel] = useState(false); // State to manage cancellation
   const navigate = useNavigate();
 
   const handleCancel = (e) => {
     e.preventDefault();
     setIsCancel(true);
-    navigate("/accountsetup");
+    navigate("/register");
   };
   if (isCancel) {
     return null;
@@ -15,7 +17,7 @@ const Header = () => {
 
   const handlePrevious = (e) => {
     e.preventDefault();
-    navigate("/accountsetup");
+    navigate("/register");
   };
 
   return (
@@ -30,7 +32,7 @@ const Header = () => {
       <div className="w-full mx-4 max-sm:mx-1">
         <div className="bg-[#b3b3b3] rounded  h-[12px] flex items-center ">
           <NavLink
-            to="/accountstep"
+            to="/register"
             className={({ isActive }) =>
               `flex-1 h-[12px] rounded ${isActive ? "" : "bg-[#ff9b00]"}`
             }
@@ -54,10 +56,9 @@ const Header = () => {
 };
 
 const OnboardingForm = () => {
-  const [showPassword, setShowPassword] = useState(false);
-
+  const [showPassword, setShowPassword] = useState(false); //state to manage password visibility
   const navigate = useNavigate();
-
+  // const [newsData, setNewsData] = useState(false)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -66,15 +67,39 @@ const OnboardingForm = () => {
     businessType: "",
     password: "",
     termsAccepted: false,
-    newsAccepted: false,
   });
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const storedData = sessionStorage.getItem("formData");
+    if (storedData) {
+      setFormData(JSON.parse(storedData));
+    }
+  }, []);
+
+  // Update sessionStorage whenever formData changes
+  //  useEffect(() => {
+  //    sessionStorage.setItem("formData", JSON.stringify(formData));
+  //  }, [formData]);
+
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData({
-      ...formData,
-      [name]: type === "checkbox" ? checked : value,
-    });
+    const { name, type, checked, value } = e.target;
+
+    if (type === "checkbox") {
+      handleCheckboxChange(name, checked); // Pass checkbox changes to the handler
+    } else {
+      setFormData((prevData) => ({
+        ...prevData,
+        [name]: value, // Update other input fields
+      }));
+    }
+  };
+
+  const handleCheckboxChange = (name, checked) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: checked, // Update checkbox state dynamically
+    }));
   };
 
   const validate = () => {
@@ -107,7 +132,7 @@ const OnboardingForm = () => {
     } else if (formData.password.length < 8) {
       newErrors.password = "Password must be at least 8 characters.";
     }
-    if (!formData.termsAccepted) {
+    if (!formData.termsAccepted || !formData.newsAccepted) {
       newErrors.termsAccepted =
         "You must accept the terms and conditions to proceed.";
     }
@@ -124,7 +149,9 @@ const OnboardingForm = () => {
     e.preventDefault();
     if (validate()) {
       console.log("Form data submitted:", formData);
-      navigate("/home"); // Redirect on successful submission
+      // Redirect on successful submission
+      sessionStorage.setItem("formData", JSON.stringify(formData));
+      navigate("/dashboard/home");
     }
   };
 
@@ -138,7 +165,6 @@ const OnboardingForm = () => {
       <div className="">
         <h1 className=" mb-2 text-[2em] font-semibold">Confirm your details</h1>
       </div>
-
       <form className="mt-[32px] " onSubmit={handleSubmit}>
         <div className="">
           <label
@@ -319,6 +345,7 @@ const OnboardingForm = () => {
                   value={formData.password}
                   onChange={handleChange}
                   className="w-full  transparent rounded placeholder:text-gray-500 focus:outline-none"
+                  autoComplete="new-password"
                 />{" "}
                 <button
                   type="button"
@@ -346,7 +373,7 @@ const OnboardingForm = () => {
                     name="termsAccepted"
                     checked={formData.termsAccepted}
                     onChange={handleChange}
-                    className="appearance-none mr-3  w-5 h-5 relative rounded-md border focus:outline-none focus:before:text-[#ff9b00] focus:before:px-1  focus:before:absolute  border-[#ff9b00] focus:before:content-['✓']"
+                    className="appearance-none mr-3  w-5 h-5 checked relative rounded-md border focus:outline-none checked:before:text-[#ff9b00] checked:before:px-1  checked:before:absolute  border-[#ff9b00] checked:before:content-['✓']"
                   />
                 </div>
                 <p className="font-medium">
@@ -387,7 +414,6 @@ const OnboardingForm = () => {
             </div>
             <div className="mt-6 flex justify-between w-full ">
               <label htmlFor="newsAccepted" className="sr-only"></label>
-
               <div>
                 <input
                   id="newsAccepted"
@@ -395,7 +421,7 @@ const OnboardingForm = () => {
                   name="newsAccepted"
                   checked={formData.newsAccepted}
                   onChange={handleChange}
-                  className="appearance-none mr-3  w-5 h-5 relative rounded-md border focus:outline-none focus:before:text-[#ff9b00] focus:before:px-1  focus:before:absolute  border-[#ff9b00] focus:before:content-['✓']"
+                  className="appearance-none mr-3  w-5 h-5 checked relative rounded-md border focus:outline-none checked:before:text-[#ff9b00] checked:before:px-1  checked:before:absolute  border-[#ff9b00] checked:before:content-['✓']"
                 />
               </div>
               <p className="font-medium text-[14px]">
@@ -405,7 +431,7 @@ const OnboardingForm = () => {
             </div>
 
             <button
-              type="sumbit"
+              type="submit"
               className="my-5 w-full py-5 font-semibold rounded-lg bg-[#ffca7d] hover:bg-[#ff9b00]"
             >
               Create your account
