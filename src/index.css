@@ -44,56 +44,10 @@ body {
   }
 }
 
-.selection__item {
-  height: max-content;
-}
-
-.radio-card {
-  background-color: #fff;
-  display: flex;
-  position: relative;
-  width: 100%;
-}
-.selection-card__checkmark,
-.selection-card__input,
-.selection-card__label:before {
-  border-radius: 50%;
-  height: 24px;
+.input-field:focus::before {
+  content: "✓";
   position: absolute;
-  right: 16px;
-  top: calc(50% - 12px);
-  width: 24px;
-}
-.selection-card__input {
-  opacity: 0;
-}
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-}
-.selection-card__input:checked + .selection-card__checkmark,
-.selection-card__input:focus + .selection-card__checkmark {
-  opacity: 1;
-}
-
-.selection-card__checkmark,
-.selection-card__input,
-.selection-card__label:before {
-  border-radius: 50%;
-  height: 24px;
-  position: absolute;
-  right: 16px;
-  top: calc(50% - 12px);
-  width: 24px;
-}
-.selection-card__checkmark {
-  transition: all 0.5s ease;
-  transition-property: opacity;
-}
-
-.selection-card__input:checked ~ .selection-card__label,
-.selection-card__input:focus ~ .selection-card__label {
-  background-color: #fff6e9;
-  border: 1.5px solid #ffca7d;
+  top: -20px;
+  left: 0;
+  color: #ff9b00;
 }

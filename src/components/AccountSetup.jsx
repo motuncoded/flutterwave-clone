@@ -6,8 +6,10 @@ import { NavLink } from "react-router-dom";
 const Header = () => {
   const [isCancel, setIsCancel] = useState(false); // State to manage modal visibility
 
+  const navigate = useNavigate();
   const handleCancel = () => {
     setIsCancel(true);
+    navigate("/accountsetup");
   };
   if (isCancel) {
     return null;
@@ -145,7 +147,7 @@ const AccountSetup = () => {
               errors.country ? "border-red-500" : "border-gray-300"
             } font-medium text-gray-500 focus:border-[#ff9b00]`}
           >
-            <option value="" disabled>
+            <option value="" disabled hidden>
               Select your country
             </option>
             <option value="Nigeria">Nigeria</option>
@@ -199,7 +201,7 @@ const AccountSetup = () => {
 
           {/* Continue Button */}
           <button
-            type="button"
+            type="submit"
             onClick={handleContinue}
             className="my-6 w-full py-5 font-semibold rounded-lg bg-[#ffca7d] hover:bg-[#ff9b00]"
           >
