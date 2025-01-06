@@ -53,7 +53,7 @@ const Sidebar = () => {
               { name: "Balances", to: "/dashboard/balances" },
               { name: "Store", to: "/dashboard/store" },
               { name: "Payments", to: "/dashboard/payments" },
-              { name: "Subaccounts", to: "/dashboard/subaccounts" },
+              { name: "Subaccounts", to: "/dashboard/subAccounts" },
               { name: "Settings", to: "/dashboard/settings" },
             ].map((item) => (
               <li
