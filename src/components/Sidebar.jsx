@@ -11,7 +11,7 @@ const Sidebar = () => {
   }, []);
 
   useEffect(() => {
-    const storedData = sessionStorage.getItem("formData");
+    const storedData = localStorage.getItem("formData");
     if (storedData) {
       setFormData(JSON.parse(storedData));
     }
@@ -28,7 +28,7 @@ const Sidebar = () => {
       <div className="relative overflow-hidden h-[calc(100vh-2px)] p-6">
         <div className="flex justify-center items-center ">
           <div className="flex justify-between space-x-2">
-            <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white bg-[#ff9b00]">
+            <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-background bg-accentOrange capitalize">
               {formData && formData.firstName.charAt(0)}
               {formData && formData.lastName.charAt(0)}
             </span>
@@ -64,8 +64,8 @@ const Sidebar = () => {
                   to={item.to}
                   className={({ isActive }) =>
                     isActive
-                      ? "text-[#ff9b00] relative after:content-[''] after:block after:w-full after:h-0.5 after:bg-[#ff9b00] after:absolute after:left-full after:top-1/2 after:ml-2 "
-                      : "text-[#121212] hover:text-[#ff9b00]"
+                      ? "text-accentOrange relative after:content-[''] after:block after:w-full after:h-0.5 after:bg-accentOrange after:absolute after:left-full after:top-1/2 after:ml-2 "
+                      : "text-[#121212] hover:text-accentOrange"
                   }
                 >
                   {item.name}

@@ -3,7 +3,6 @@ import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 // Header
-
 const Header = () => {
   const navigate = useNavigate();
 
@@ -19,7 +18,7 @@ const Header = () => {
       <div className="flex justify-end">
         <button
           type="button"
-          className="btn-primary py-[6px] px-[14px] tracking-tight hover:bg-[#cc7c00] "
+          className="btn-primary py-[6px] px-[14px] tracking-tight hover:bg-accentHover "
           onClick={handleNavigate}
         >
           {" "}
@@ -44,7 +43,7 @@ const Account = () => {
   };
 
   return (
-    <div className=" slideIn bg-background m-[100px] py-8 px-6 rounded-lg  w-[340px] shadow-md max-sm:mx-2 max-sm:my-[75px]">
+    <div className="slideIn bg-background m-[100px] py-8 px-6 rounded-lg  w-[340px] shadow-md max-sm:mx-2 max-sm:my-[75px]">
       <h1 className="text-[18px] font-medium  mb-[20px]">
         Login to your account
       </h1>
@@ -57,7 +56,7 @@ const Account = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="Email address"
-            className="mt-1  w-full p-2 border border-[#e0e0e0] placeholder-inherit transition-all focus:outline-none focus:border-[#ff9b00]
+            className="mt-1  w-full p-2 border border-border placeholder-inherit transition-all focus:outline-none focus:border-accentOrange
              rounded"
           />
         </div>
@@ -70,7 +69,7 @@ const Account = () => {
               onChange={(e) => setPassword(e.target.value)}
               required
               placeholder="Password"
-              className="mt-1  w-full p-2 border border-[#e0e0e0] placeholder-inherit transition-all focus:outline-none focus:border-[#ff9b00]
+              className="mt-1  w-full p-2 border border-border placeholder-inherit transition-all focus:outline-none focus:border-accentOrange
         rounded"
             />
             <button
@@ -94,7 +93,7 @@ const Account = () => {
         </button>
       </form>
       <p className="mt-4">
-        <a href="#forgot-password" className="text-[#576ae6]">
+        <a href="#forgot-password" className="text-accentLink">
           Forgot password?
         </a>
       </p>

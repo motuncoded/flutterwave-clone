@@ -14,7 +14,7 @@ const OverviewAccount = () => {
             seconds
           </h2>
           <p className="text-gray-500 mb-4 font-medium leading--[18px]"></p>
-          <button className="border-[#ff9b00] border-2 py-1 px-4 w-[200px] font-medium text-black max-xl:w-[200px]">
+          <button className="border-accentOrange border-2 py-1 px-4 w-[200px] font-medium text-black max-xl:w-[200px]">
             Activate your account
           </button>
         </div>

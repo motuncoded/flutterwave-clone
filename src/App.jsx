@@ -9,7 +9,7 @@ import Customers from "./pages/Customers";
 import Balances from "./pages/Balances";
 import Store from "./pages/Store";
 import Payments from "./pages/Payments";
-import Subaccounts from "./pages/Subaccounts";
+import SubAccounts from "./pages/SubAccounts";
 import Settings from "./pages/Settings";
 import Details from "./components/Details";
 import Register from "./routes/Register";
@@ -30,7 +30,7 @@ function App() {
         <Route path="balances" element={<Balances />} />
         <Route path="store" element={<Store />} />
         <Route path="payments" element={<Payments />} />
-        <Route path="subaccounts" element={<Subaccounts />} />
+        <Route path="subaccounts" element={<SubAccounts />} />
         <Route path="settings" element={<Settings />} />
       </Route>
       {/* <Route path="*" element={<NotFound />} />{" "} */}

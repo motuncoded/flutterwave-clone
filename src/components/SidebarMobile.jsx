@@ -7,7 +7,7 @@ const SidebarMobile = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState(null);
 
   useEffect(() => {
-    const storedData = sessionStorage.getItem("formData");
+    const storedData = localStorage.getItem("formData");
     if (storedData) {
       setFormData(JSON.parse(storedData));
     }
@@ -20,7 +20,7 @@ const SidebarMobile = ({ isOpen, onClose }) => {
     >
       <div className="flex justify-between items-center p-6 max-sm:px-4">
         <div className="flex justify-between">
-          <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white bg-[#ff9b00]">
+          <span className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-background bg-accentOrange capitalize">
             {formData && formData.firstName.charAt(0)}
             {formData && formData.lastName.charAt(0)}{" "}
           </span>
@@ -30,8 +30,8 @@ const SidebarMobile = ({ isOpen, onClose }) => {
                 {formData.firstName} {formData.lastName}
               </h1>
             )}
-            <h2 className="text-[10px] text-[#828282]">
-              Merchant ID: <span className="text-[#576ae6]">View here</span>
+            <h2 className="text-[10px] text-accentGray">
+              Merchant ID: <span className="text-accentLink">View here</span>
             </h2>
           </div>
         </div>
@@ -59,8 +59,8 @@ const SidebarMobile = ({ isOpen, onClose }) => {
                 to={item.to}
                 className={({ isActive }) =>
                   isActive
-                    ? "text-[#ff9b00] relative after:content-[''] after:block after:w-full after:h-0.5 after:bg-[#ff9b00] after:absolute after:left-full after:top-1/2 after:ml-2"
-                    : "text-[#121212] hover:text-[#ff9b00]"
+                    ? "text-accentOrange relative after:content-[''] after:block after:w-full after:h-0.5 after:bg-accentOrange after:absolute after:left-full after:top-1/2 after:ml-2"
+                    : "text-[#121212] hover:text-accentOrange"
                 }
               >
                 {item.name}

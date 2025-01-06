@@ -4,14 +4,20 @@
 
 :root {
   --primary-color: #6f3f8d;
-  --secondary-color: #f03c20;
+  --error: #f03c20;
   --accent-color: #3ab0ff;
   --warning-color: #fbbe06;
   --background-color: #ffffff;
+  --border: #e0e0e0;
+  --accent-orange: #ff9b00;
+  --text-color: #121212;
+  --accent-link: #576ae6;
+  --accent-hover: #cc7c00;
+  --accent-gray: #828282;
 }
 .bg-primary {
-  color: #12122c;
-  background-color: #ff9b00;
+  color: var(--text-color);
+  background-color: var(--accent-orange);
   border-radius: 4px;
   font-weight: 500;
 }

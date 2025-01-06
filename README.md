@@ -6,11 +6,15 @@
 
 #### Register
 
+![Flutterwave Register Page](./screenshots/register.png)
+
 #### Login Page
 
-![Flutterwave Login Page](./screenshots/Flutterwave-Clone-Login.png)
+![Flutterwave Login Page](./screenshots/Login.png)
 
 #### Dashboard
+
+![Flutterwave Dashboard Page](./screenshots/dashboard.png)
 
 ## Table of Contents
 

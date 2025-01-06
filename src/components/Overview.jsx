@@ -5,7 +5,7 @@ import AccountGraph from "./AccountGraph.jsx";
 import data from "../json/flutterwave_transactions.json";
 const Dates = ({ datee, dateee }) => {
   return (
-    <div className=" border border-gray-400 rounded-md font-bold flex items-center divide-x-2">
+    <div className=" border border-accentGray rounded-md font-bold flex items-center divide-x-2">
       <span className="p-2">{datee}</span>
       <span className="p-2">{dateee}</span>
     </div>
@@ -15,7 +15,7 @@ const Dates = ({ datee, dateee }) => {
 const Total = ({ heading, value }) => {
   return (
     <div className="">
-      <h3 className=" text-gray-400 py-1">{heading}</h3>
+      <h3 className=" text-accentGray py-1">{heading}</h3>
       <h3 className="text-[18px] font-semibold">{value}</h3>
     </div>
   );
@@ -24,7 +24,7 @@ const Amount = () => {
   const totalAmount = data.reduce((sum, data) => sum + data.amount, 0);
   return (
     <div className="">
-      <h3 className=" text-gray-400 py-1">Total transactions</h3>
+      <h3 className=" text-accentGray py-1">Total transactions</h3>
       <h3 className="text-[18px] font-semibold">NGN {totalAmount}.00</h3>
     </div>
   );
@@ -35,7 +35,7 @@ const Revenue = () => {
     .reduce((sum, transaction) => sum + transaction.amount, 0); // Sum the amounts
   return (
     <div className="">
-      <h3 className=" text-gray-400 py-1">Total revenue</h3>
+      <h3 className=" text-accentGray py-1">Total revenue</h3>
       <h3 className="text-[18px] font-semibold">NGN {totalRevenue}</h3>
     </div>
   );
@@ -47,7 +47,7 @@ const Failed = () => {
     .reduce((sum, transaction) => sum + transaction.amount, 0); // Sum the amounts
   return (
     <div className="">
-      <h3 className=" text-gray-400 py-1">Total failed</h3>
+      <h3 className=" text-accentGray py-1">Total failed</h3>
       <h3 className="text-[18px] font-semibold">NGN {totalRevenue}</h3>
     </div>
   );
@@ -58,7 +58,7 @@ const Pending = () => {
     .reduce((sum, transaction) => sum + transaction.amount, 0); // Sum the amounts
   return (
     <div className="">
-      <h3 className=" text-gray-400 py-1">Total pending</h3>
+      <h3 className=" text-accentGray py-1">Total pending</h3>
       <h3 className="text-[18px] font-semibold">NGN {totalRevenue}</h3>
     </div>
   );
@@ -82,11 +82,11 @@ const Overview = () => {
         </div>
       </div>
       <div
-        className="grid grid-cols-[2fr_1fr] place-items-center gap-4 border divide-x-2
-         max-sm:grid-cols-[1fr] max-sm:divide-x-0 max-sm:flex max-sm:flex-wrap
-          max-md:grid-cols-[1fr] max-md:divide-x-0 max-md:flex max-md:flex-wrap  "
+        className="w-full grid grid-cols-[2.5fr_1fr] place-content-center gap-4 border divide-x
+         max-sm:grid-cols-[1fr] max-sm:divide-x-0  max-sm:place-content-start
+          max-md:grid-cols-[1fr] max-md:divide-x-0 max-md:place-content-start  "
       >
-        <div className="px-4 py-6  w-full max-sm:px-2 max-sm:border-b-2 max-md:px-2 max-md:border-b-2 ">
+        <div className=" py-6 -pl-3 w-[100%]  max-sm:px-2 max-sm:border-b-2 max-md:px-2 max-md:border-b-2 ">
           <AccountGraph />
         </div>
         <div className="flex flex-col justify-center space-y-6 px-5 py-6 ">
@@ -97,7 +97,10 @@ const Overview = () => {
           <Failed />
           <Pending />
 
-          <a href="#" className="text-[#ff9b00] font-bold">
+          <a
+            href="/dashboard/transactions"
+            className="text-accentOrange font-bold"
+          >
             See all transactions
           </a>
         </div>

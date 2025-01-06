@@ -23,16 +23,21 @@ const Header = () => {
           width="250"
           height="250"
           alt="logo"
-          className="w-full h-max"
+          className="max-w-max h-max max-sm:hidden "
+        />
+        <img
+          src="/logo-sm.svg"
+          alt="logo"
+          className="max-w-max h-max hidden max-sm:block"
         />
       </a>
-      <div className="w-full mx-4 max-sm:mx-1">
+      <div className="w-full  mx-4 max-sm:mx-1">
         <div className="bg-[#b3b3b3] rounded h-[12px] flex items-center">
           <NavLink
             to="/register"
             className={({ isActive }) =>
               `flex-1 h-[12px] rounded ${
-                isActive ? "bg-[#ff9b00]" : "bg-transparent"
+                isActive ? "bg-accentOrange" : "bg-transparent"
               }`
             }
           ></NavLink>
@@ -40,14 +45,14 @@ const Header = () => {
             to="/details"
             className={({ isActive }) =>
               `flex-1 h-[12px] rounded ${
-                isActive ? "bg-[#ff9b00]" : "bg-transparent"
+                isActive ? "bg-accentOrange" : "bg-transparent"
               }`
             }
           ></NavLink>
         </div>
       </div>
       <button type="submit" onClick={handleCancel} aria-label="Cancel">
-        <img src="/cancel.svg" alt="cancel-icon" />
+        <img src="/cancel.svg" alt="cancel-icon" className="max-w-max" />
       </button>
     </header>
   );
@@ -64,7 +69,7 @@ const AccountType = ({
   return (
     <div
       className={`flex justify-between h-max mt-2 relative w-full border rounded p-4 cursor-pointer ${
-        isSelected ? "bg-[#fff6e9] border-[#ff9b00]" : "border-gray-300"
+        isSelected ? "bg-[#fff6e9] border-accentOrange" : "border-border"
       }`}
       onClick={() => onSelect(value)}
     >
@@ -83,7 +88,7 @@ const AccountType = ({
           value={value}
           checked={isSelected}
           readOnly
-          className="peer appearance-none w-6 h-6 rounded-full border-gray-300 border-2 bg-white checked:border-4 checked:border-[#703e00] checked:bg-[#ff9b00]"
+          className="peer appearance-none w-6 h-6 rounded-full border-border border-2 bg-white checked:border-4 checked:border-[#703e00] checked:bg-accentOrange"
         />
       </div>
     </div>
@@ -116,6 +121,7 @@ const AccountSetup = () => {
     if (!accountType) {
       validationErrors.accountType = "Please select an account type.";
     }
+    setErrors(validationErrors);
     return validationErrors;
   };
 
@@ -125,6 +131,11 @@ const AccountSetup = () => {
     const validationErrors = handleValidation();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors); // Set validation errors
+
+      // Clear errors after 3 seconds
+      setTimeout(() => {
+        setErrors({}); // Clear errors
+      }, 3000);
     } else {
       setErrors({});
       sessionStorage.setItem("country", country);
@@ -138,7 +149,7 @@ const AccountSetup = () => {
     <div>
       <Header />
 
-      <div className="flex items-center justify-center py-10 px-4">
+      <div className="flex items-center justify-center py-8 px-4 max-sm:px-1">
         <form className="w-1/3 max-sm:w-10/12 max-md:w-10/12 max-xl:w-8/12">
           <h1 className="text-2xl font-bold">
             What type of account would you like to create?
@@ -159,8 +170,8 @@ const AccountSetup = () => {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             className={`w-full mt-2 px-2 py-4 border outline-none rounded-md ${
-              errors.country ? "border-red-500" : "border-gray-300"
-            } font-medium text-gray-500 focus:border-[#ff9b00]`}
+              errors.country ? "border-error" : "border-border"
+            } font-medium text-gray-500 focus:border-accentOrange`}
           >
             <option value="" disabled hidden>
               Select your country
@@ -169,13 +180,13 @@ const AccountSetup = () => {
             <option value="Rwanda">Rwanda</option>
           </select>
           {errors.country && (
-            <p className="text-red-500 text-sm mt-1">{errors.country}</p>
+            <p className="text-error text-sm mt-1">{errors.country}</p>
           )}
-          <p className="text-[12px] text-[#828282] mt-1.5 font-medium">
+          <p className="text-[12px] text-accentGray mt-1.5 font-medium">
             For other countries click{" "}
             <a
               href="https://flutterwave.com/ng/contact-sales"
-              className="text-blue-500"
+              className="text-accentLink"
             >
               here
             </a>
@@ -186,7 +197,7 @@ const AccountSetup = () => {
           <div className="my-6">
             <label
               htmlFor="entity"
-              className="text-sm font-medium text-gray-700"
+              className="text-sm font-medium text-accentGray"
             >
               Select an account type
             </label>
@@ -210,7 +221,7 @@ const AccountSetup = () => {
               />
             </div>
             {errors.accountType && (
-              <p className="text-red-500 text-sm mt-1">{errors.accountType}</p>
+              <p className="text-error text-sm mt-1">{errors.accountType}</p>
             )}
           </div>
 
@@ -218,13 +229,13 @@ const AccountSetup = () => {
           <button
             type="submit"
             onClick={handleContinue}
-            className="my-6 w-full py-5 font-semibold rounded-lg bg-[#ffca7d] hover:bg-[#ff9b00]"
+            className="my-6 w-full py-5 font-semibold rounded-lg bg-[#ffca7d] hover:bg-accentOrange"
           >
             Continue
           </button>
           <p className="font-medium text-center">
             Already have an account?{" "}
-            <a href="/login" className="text-[#576ae6]">
+            <a href="/login" className="text-accentLink">
               Login here
             </a>
           </p>

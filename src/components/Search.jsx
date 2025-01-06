@@ -37,7 +37,7 @@ const Search = ({ data }) => {
         />
       </div>
       {isFocused && (
-        <ul className="mt-4 absolute bg-white w-[calc(600px-1rem)] ">
+        <ul className="mt-4 absolute bg-background w-[calc(600px-1rem)] ">
           {filteredData.length > 0 ? (
             filteredData.map((item, index) => (
               <li key={index} className="p-2 hover:bg-gray-100 cursor-pointer">
@@ -47,7 +47,7 @@ const Search = ({ data }) => {
               </li>
             ))
           ) : (
-            <li className="text-gray-500">No results found.</li>
+            <li className="text-accentGray">No results found.</li>
           )}
         </ul>
       )}

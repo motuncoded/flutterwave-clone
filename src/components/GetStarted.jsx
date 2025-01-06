@@ -37,7 +37,7 @@ const StartedCards = () => {
             <p className="text-gray-500 mb-4 font-medium leading--[18px]">
               {data.description}
             </p>
-            <button className="border-[#121212] border-2 py-1 px-4 w-full font-medium rounded text-[#333] max-xl:w-[200px]">
+            <button className="border-[#121212] hover:bg-[#eee] border-2 py-1 px-4 w-full font-medium rounded text-[#333] max-xl:w-[200px]">
               {data.link}
             </button>
           </div>
@@ -59,7 +59,7 @@ const GetStarted = () => {
 
   return (
     <section className={`px-4 py-6 ${isCancel ? "none" : ""}  `}>
-      <div className="flex justify-between px-2 py-6">
+      <div className="flex justify-between px-2 py-4">
         <h2 className="font-bold text-xl">Let&apos;s get you started</h2>
         <button type="submit" onClick={handleCancel} aria-label="Cancel">
           <img src="/cancel.svg" alt="cancel-icon" />
