@@ -48,7 +48,7 @@ const SidebarMobile = ({ isOpen, onClose }) => {
             { name: "Balances", to: "/dashboard/balances" },
             { name: "Store", to: "/dashboard/store" },
             { name: "Payments", to: "/dashboard/payments" },
-            { name: "Subaccounts", to: "/dashboard/subAccounts" },
+            // { name: "Subaccounts", to: "/dashboard/subAccounts" },
             { name: "Settings", to: "/dashboard/settings" },
           ].map((item) => (
             <li
