@@ -86,12 +86,38 @@ const OnboardingForm = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleRegisterSubmit = (e) => {
     e.preventDefault();
+
     if (validate()) {
       console.log("Form data submitted:", formData);
-      // Redirect on successful submission
+
+      //To Retrieve existing users or initialize an empty array
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      //To Check for duplicate email
+      if (users.some((user) => user.email === formData.email)) {
+        setErrors((prevErrors) => ({
+          ...prevErrors,
+          email: "Email already registered.",
+        }));
+        setTimeout(() => setErrors({}), 3000); //To Clear errors after 3 seconds
+        return;
+      }
+
+      //To Save new user to users array
+      users.push({
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        password: formData.password,
+      });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      //To Save form data separately for user display purposes
       localStorage.setItem("formData", JSON.stringify(formData));
+
+      console.log("Form data saved:", formData);
       navigate("/dashboard/home");
     }
   };
@@ -106,7 +132,7 @@ const OnboardingForm = () => {
       <div className="">
         <h1 className=" mb-2 text-[2em] font-semibold">Confirm your details</h1>
       </div>
-      <form className="mt-[32px] " onSubmit={handleSubmit}>
+      <form className="mt-[32px] " onSubmit={handleRegisterSubmit}>
         <div className="">
           <label
             htmlFor="firstName"
@@ -255,6 +281,7 @@ const OnboardingForm = () => {
                 </label>
                 <select
                   id="businessType"
+                  name="businessType"
                   value={formData.businessType}
                   onChange={handleChange}
                   className={`w-full mt-2  p-4 border outline-none rounded-md  font-medium text-accentGray focus:border-accentOrange`}
@@ -262,8 +289,10 @@ const OnboardingForm = () => {
                   <option value="" disabled hidden>
                     --select an option
                   </option>
-                  <option value="sole">Sole Properietorship</option>
-                  <option value="limited">Limited Company</option>
+                  <option value="Sole Proprietorship">
+                    Sole Proprietorship
+                  </option>
+                  <option value="">Limited Company</option>
                 </select>
                 {errors.businessType && (
                   <p className="text-error text-sm">{errors.businessType}</p>

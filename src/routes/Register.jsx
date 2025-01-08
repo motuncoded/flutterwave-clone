@@ -7,6 +7,8 @@ const Header = () => {
   const [isCancel, setIsCancel] = useState(false); // State to manage modal visibility
 
   const navigate = useNavigate();
+
+  //Handle cancelling
   const handleCancel = () => {
     setIsCancel(true);
     navigate("/accountsetup");
@@ -102,8 +104,8 @@ const AccountSetup = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedCountry = sessionStorage.getItem("country");
-    const storedAccountType = sessionStorage.getItem("accountType");
+    const storedCountry = localStorage.getItem("country");
+    const storedAccountType = localStorage.getItem("accountType");
 
     if (storedCountry) {
       setCountry(storedCountry);
@@ -138,8 +140,8 @@ const AccountSetup = () => {
       }, 3000);
     } else {
       setErrors({});
-      sessionStorage.setItem("country", country);
-      sessionStorage.setItem("accountType", accountType);
+      localStorage.setItem("country", country);
+      localStorage.setItem("accountType", accountType);
 
       navigate("/details");
     }
@@ -235,7 +237,7 @@ const AccountSetup = () => {
           </button>
           <p className="font-medium text-center">
             Already have an account?{" "}
-            <a href="/login" className="text-accentLink">
+            <a href="/" className="text-accentLink">
               Login here
             </a>
           </p>

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
+  const handleRegisterPage = () => {
     navigate("/register");
   };
 
@@ -19,7 +19,7 @@ const Header = () => {
         <button
           type="button"
           className="btn-primary py-[6px] px-[14px] tracking-tight hover:bg-accentHover "
-          onClick={handleNavigate}
+          onClick={handleRegisterPage}
         >
           {" "}
           Create account{" "}
@@ -35,11 +35,37 @@ const Account = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(""); // State for error messages
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
-    // Handle authentication logic here
-    console.log("Logging in with:", { email, password });
+
+    // Retrieve users from localStorage
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Find user by email
+    const user = users.find((user) => user.email === email);
+
+    // Validate email and password
+    if (!user) {
+      setErrorMessage("Email not registered. Please sign up.");
+      setTimeout(() => setErrorMessage(""), 3000);
+      return;
+    }
+
+    if (user.password !== password) {
+      setErrorMessage("Incorrect password. Please try again.");
+      setTimeout(() => setErrorMessage(""), 3000);
+      return;
+    }
+
+    // Save formData for displaying user info in the dashboard
+    localStorage.setItem("formData", JSON.stringify(user));
+
+    // Successful login
+    console.log("Login successful:", { email });
+    navigate("/dashboard/home");
   };
 
   return (
@@ -47,10 +73,11 @@ const Account = () => {
       <h1 className="text-[18px] font-medium  mb-[20px]">
         Login to your account
       </h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLoginSubmit}>
         <div className="mb-4">
           <label htmlFor="email" className="sr-only"></label>
           <input
+            id="email"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -64,6 +91,7 @@ const Account = () => {
           <label htmlFor="password" className="sr-only"></label>
           <div className="relative">
             <input
+              id="password"
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -84,6 +112,7 @@ const Account = () => {
               )}
             </button>
           </div>
+          {errorMessage && <p className="text-error text-sm">{errorMessage}</p>}
         </div>
         <button
           type="submit"
@@ -92,28 +121,23 @@ const Account = () => {
           Login
         </button>
       </form>
-      <p className="mt-4">
-        <a href="#forgot-password" className="text-accentLink">
-          Forgot password?
-        </a>
-      </p>
     </div>
   );
 };
 
 const Footer = () => {
   return (
-    <footer className=" text-[12px] flex justify-between  py-8 font-medium px-8 max-sm:grid max-sm:grid-cols-[2fr_1fr_1fr] max-sm:place-items-center gap-4">
+    <footer className="text-[13px]  flex justify-between  py-6 font-medium px-8 max-sm:grid max-sm:grid-cols-[2fr_1fr_1fr] max-sm:place-items-center gap-4 ">
       <p>
         Flutterwave Technology Solutions Limited - Licensed by the Central Bank
         of Nigeria
       </p>
       <p>
-        <a href="#privacy-policy">Privacy policy</a>
+        <a href="https://flutterwave.com/ng/privacy-policy">Privacy policy</a>
       </p>
       <p>
         {" "}
-        <a href="#terms" className="">
+        <a href="https://flutterwave.com/ng/terms" className="">
           Terms and conditions
         </a>
       </p>
@@ -124,7 +148,7 @@ function Login() {
   return (
     <div className="home">
       <Header />
-      <div className="max-sm:grid max-sm:place-items-center ">
+      <div className="min-h-[85vh] flex justify-between flex-col max-sm:grid max-sm:place-items-center">
         <Account />
         <Footer />
       </div>

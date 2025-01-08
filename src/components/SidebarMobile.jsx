@@ -1,10 +1,11 @@
 import { AiOutlineClose } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 const SidebarMobile = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedData = localStorage.getItem("formData");
@@ -12,6 +13,17 @@ const SidebarMobile = ({ isOpen, onClose }) => {
       setFormData(JSON.parse(storedData));
     }
   }, []);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("formData"));
+    if (!user) {
+      navigate("/login"); // Redirect if no user is logged in
+    }
+  }, [navigate]);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("formData");
+    navigate("/");
+  };
   return (
     <div
       className={`fixed top-0 left-0 h-full bg-[#f4f6f8] shadow-md z-50 transform ${
@@ -48,7 +60,7 @@ const SidebarMobile = ({ isOpen, onClose }) => {
             { name: "Balances", to: "/dashboard/balances" },
             { name: "Store", to: "/dashboard/store" },
             { name: "Payments", to: "/dashboard/payments" },
-            // { name: "Subaccounts", to: "/dashboard/subAccounts" },
+            { name: "SubAccounts", to: "/dashboard/subaccounts" },
             { name: "Settings", to: "/dashboard/settings" },
           ].map((item) => (
             <li
@@ -68,6 +80,13 @@ const SidebarMobile = ({ isOpen, onClose }) => {
             </li>
           ))}
         </ul>
+        <button
+          type="button"
+          onClick={handleSignOut}
+          className="text-2xl mt-16 leading-[34px] font-medium text-[#cc7c00] hover:text-accentOrange "
+        >
+          Sign Out
+        </button>
       </nav>
     </div>
   );

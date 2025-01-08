@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 const Sidebar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [formData, setFormData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -16,6 +17,17 @@ const Sidebar = () => {
       setFormData(JSON.parse(storedData));
     }
   }, []);
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("formData"));
+    if (!user) {
+      navigate("/login"); // Redirect if no user is logged in
+    }
+  }, [navigate]);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("formData");
+    navigate("/");
+  };
   return (
     <div
       role="sidebar"
@@ -53,7 +65,7 @@ const Sidebar = () => {
               { name: "Balances", to: "/dashboard/balances" },
               { name: "Store", to: "/dashboard/store" },
               { name: "Payments", to: "/dashboard/payments" },
-              // { name: "Subaccounts", to: "/dashboard/subAccounts" },
+              { name: "Subaccounts", to: "/dashboard/subaccounts" },
               { name: "Settings", to: "/dashboard/settings" },
             ].map((item) => (
               <li
@@ -73,6 +85,13 @@ const Sidebar = () => {
               </li>
             ))}
           </ul>
+          <button
+            type="button"
+            onClick={handleSignOut}
+            className="text-2xl mt-16 leading-[34px] font-medium text-[#cc7c00] hover:text-accentOrange "
+          >
+            Sign Out
+          </button>
         </div>
       </div>
     </div>

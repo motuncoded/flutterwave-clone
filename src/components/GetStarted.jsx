@@ -37,9 +37,12 @@ const StartedCards = () => {
             <p className="text-gray-500 mb-4 font-medium leading--[18px]">
               {data.description}
             </p>
-            <button className="border-[#121212] hover:bg-[#eee] border-2 py-1 px-4 w-full font-medium rounded text-[#333] max-xl:w-[200px]">
+            <a
+              href="/dashboard/payment"
+              className="border-[#121212] hover:bg-[#eee] border-2 py-1 px-4 w-full font-medium rounded text-[#333] max-xl:w-[200px]"
+            >
               {data.link}
-            </button>
+            </a>
           </div>
         );
       })}

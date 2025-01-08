@@ -1,8 +1,8 @@
 const OverviewAccount = () => {
   return (
-    <div className="py-[32px] px-[14px] bg-orange-100 w-full">
+    <div className="py-[22px] px-[14px] bg-[#FFF6E9] w-full ">
       <h2 className="font-bold text-xl">Activate the account</h2>
-      <div className="bg-white rounded mt-4 -mb-2 flex justify-between">
+      <div className="bg-white rounded relative mt-4 -mb-2 flex justify-between max-sm:flex-col">
         <div className=" px-6 py-6">
           <img
             src="/lock.svg"
@@ -14,12 +14,17 @@ const OverviewAccount = () => {
             seconds
           </h2>
           <p className="text-gray-500 mb-4 font-medium leading--[18px]"></p>
-          <button className="border-accentOrange border-2 py-1 px-4 w-[200px] font-medium text-black max-xl:w-[200px]">
+          <button className="bg-[#FFF6E9] border-accentOrange border-2 py-1 px-4 w-[200px] font-medium text-[#703e00] rounded-sm max-xl:w-[200px]">
             Activate your account
           </button>
         </div>
-        <div>
-          <img src="/biglock.png" width="300" height="300" alt="lock-icon" />
+        <div className="absolute right-0 -top-20 bottom-0 max-sm:hidden  max-xl:hidden">
+          <img
+            src="	https://app.flutterwave.com/_nuxt/img/payment-protection.564b36c.png"
+            width="350"
+            height="350"
+            alt="lock-icon"
+          />
         </div>
       </div>
     </div>
