@@ -18,7 +18,7 @@ const Search = ({ data }) => {
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setTimeout(() => setIsFocused(false), 200);
   return (
-    <form className="w-[600px] p-2 border-2 border-[#f2f2f2] rounded-sm max-sm:w-3/4 ">
+    <form className="w-[600px] p-2 border-2 border-[#f2f2f2] rounded-sm max-sm:w-3/4">
       <label htmlFor="search" className="sr-only">
         Search
       </label>

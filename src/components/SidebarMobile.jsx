@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 
 const SidebarMobile = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState(null);
+  const [merchantID, setMerchantID] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,6 +26,20 @@ const SidebarMobile = ({ isOpen, onClose }) => {
     localStorage.removeItem("formData");
     navigate("/");
   };
+  useEffect(() => {
+    // Check if Merchant ID already exists in localStorage
+    const storedID = localStorage.getItem("merchantID");
+
+    if (storedID) {
+      // Use the existing ID if it exists
+      setMerchantID(storedID);
+    } else {
+      // Generate a new random ID and store it
+      const randomID = Math.floor(Math.random() * 1000000); // Generate a number between 0 and 999999
+      setMerchantID(randomID);
+      localStorage.setItem("merchantID", randomID);
+    }
+  }, []);
   return (
     <div
       className={`fixed top-0 left-0 h-full bg-[#f4f6f8] shadow-md z-50 transform ${
@@ -43,7 +59,7 @@ const SidebarMobile = ({ isOpen, onClose }) => {
               </h1>
             )}
             <h2 className="text-[10px] text-accentGray">
-              Merchant ID: <span className="text-accentLink">View here</span>
+              Merchant ID: <span className="text-[#576ae6]">{merchantID}</span>
             </h2>
           </div>
         </div>
@@ -70,12 +86,11 @@ const SidebarMobile = ({ isOpen, onClose }) => {
               <NavLink
                 to={item.to}
                 className={({ isActive }) =>
-                  isActive
-                    ? "text-accentOrange relative after:content-[''] after:block after:w-full after:h-0.5 after:bg-accentOrange after:absolute after:left-full after:top-1/2 after:ml-2"
-                    : "text-[#121212] hover:text-accentOrange"
+                  isActive ? "" : "text-[#121212] hover:text-accentOrange"
                 }
               >
                 {item.name}
+                <span></span>
               </NavLink>
             </li>
           ))}

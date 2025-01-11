@@ -98,34 +98,39 @@ Header.propTypes = {
 
 const TransactionsTable = ({ currentRows }) => {
   return (
-    <div>
+    <div className="mt-6  max-md:mt-3 max-sm:mt-3">
       <table className="w-full rounded-xl">
         <thead>
           <tr className="bg-gray-100 text-left">
-            <th className="p-4 text-left font-normal flex flex-col">
+            <th className="p-4 max-sm:p-2 text-left font-normal flex flex-col">
               Description
               <span className="text-[12px] text-accentGray">
                 Transaction id
               </span>
             </th>
-            <th className="p-4 text-left font-normal">Amount</th>
-            <th className="p-4 text-left font-normal">Payment method</th>
-            <th className="p-4 text-left font-normal">Status</th>
-            <th className="p-4 text-left font-normal">Date</th>
+            <th className="p-4 max-sm:p-2 text-left font-normal">Amount</th>
+            <th className="p-4 max-sm:p-2 text-left font-normal">
+              Payment method
+            </th>
+            <th className="p-4 max-sm:p-2 text-left font-normal">Status</th>
+            <th className="p-4 max-sm:p-2 text-left font-normal">Date</th>
           </tr>
         </thead>
         <tbody>
           {currentRows.map((item, index) => (
             <tr key={index} className="hover:bg-gray-50">
-              <td className="p-4 flex flex-col">
+              <td
+                className="p-4
+              max-sm:p-2 flex flex-col"
+              >
                 <span className="font-semibold">{item.customer_name}</span>
                 <span className="text-[12px]  text-accentGray">
                   {item.transaction_id}
                 </span>
               </td>
-              <td className="p-4">NGN {item.amount}</td>
-              <td className="p-4">{item.payment_method}</td>
-              <td className="p-4">
+              <td className="p-4 max-sm:p-2">NGN {item.amount}</td>
+              <td className="p-4 max-sm:p-2">{item.payment_method}</td>
+              <td className="p-4 max-sm:p-2">
                 <span
                   className={`${item.status === "Success" ? "text-green-800 p-2 font-medium bg-green-200 rounded-lg" : ""}
                   ${item.status === "Failed" ? "text-pink-800 p-2 font-medium bg-pink-200 rounded-lg" : ""}`}
@@ -133,7 +138,7 @@ const TransactionsTable = ({ currentRows }) => {
                   {item.status}
                 </span>
               </td>
-              <td className="p-4">{item.date}</td>
+              <td className="p-4 max-sm:p-2">{item.date}</td>
             </tr>
           ))}
         </tbody>
@@ -190,7 +195,7 @@ function Transactions() {
         onSearch={handleSearch}
       />
 
-      <div className="w-[calc(100% - 2rem)] max-w-full m-auto px-8 py-1 max-sm:px-[3px]">
+      <div className="w-[calc(100% - 2rem)] max-w-full m-auto px-8 py-1 max-sm:px-[3px] ">
         <h1 className="text-2xl font-semibold py-2"> All transactions</h1>{" "}
         <TransactionsTable currentRows={currentRows} />
         <div className="flex justify-between items-center mt-4">

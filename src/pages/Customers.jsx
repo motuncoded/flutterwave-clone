@@ -98,7 +98,7 @@ Header.propTypes = {
 
 const CustomersTable = ({ currentRows }) => {
   return (
-    <div>
+    <div className="mt-6 max-md:mt-3 max-sm:mt-3">
       <table className="w-full rounded-xl">
         <thead>
           <tr className="bg-gray-100 ">
@@ -174,10 +174,10 @@ function Customers() {
         onSearch={handleSearch}
       />
 
-      <div className="w-[calc(100% - 2rem)] max-w-full m-auto px-8 py-1 max-sm:px-[1px]">
+      <div className="w-[calc(100% - 2rem)] max-w-full m-auto px-8 py-1 max-sm:px-[1px] max-sm:mx-2">
         <h1 className="text-2xl font-semibold py-4"> All customers</h1>{" "}
         <CustomersTable currentRows={currentRows} />
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex justify-between items-center mt-4 ">
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
