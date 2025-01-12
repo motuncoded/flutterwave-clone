@@ -1,3 +1,4 @@
+//the overview component in the dashboard page
 import Days from "./Days";
 import Currency from "./Currency.jsx";
 import PropTypes from "prop-types";
@@ -86,7 +87,7 @@ const Overview = () => {
          max-sm:grid-cols-[1fr] max-sm:divide-x-0  max-sm:place-content-start
           max-md:grid-cols-[1fr] max-md:divide-x-0 max-md:place-content-start  "
       >
-        <div className=" py-6 -pl-3 w-[100%]  max-sm:px-2 max-sm:border-b-2 max-md:px-2 max-md:border-b-2 ">
+        <div className=" py-6  w-[100%]  max-sm:-pr-2 max-sm:border-b-2 max-md:px-2 max-md:border-b-2 ">
           <AccountGraph />
         </div>
         <div className="flex flex-col justify-center space-y-6 px-5 py-6 ">

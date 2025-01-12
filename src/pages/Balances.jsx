@@ -52,11 +52,11 @@ function Balance() {
   const handleOpen = () => setIsSidebarOpen(true);
   const handleClose = () => setIsSidebarOpen(false);
   return (
-    <div className="px-6 max-sm:px-2">
+    <div className="px-6 max-sm:px-0">
       <Header onOpen={handleOpen} />
-      <h1 className="text-xl font-semibold py-2">All balances</h1>
+      <h1 className="text-2xl font-semibold py-2 max-sm:px-4">All balances</h1>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col max-sm:px-3">
         <Balances />
       </div>
       <SidebarMobile isOpen={isSidebarOpen} onClose={handleClose} />

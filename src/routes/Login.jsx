@@ -29,7 +29,7 @@ const Header = () => {
   );
 };
 
-//  Login
+//  Login page
 
 const Account = () => {
   const [email, setEmail] = useState("");

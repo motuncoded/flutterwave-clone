@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { useEffect, useState } from "react";
 
+//Dashboard layout
 const DashboardLayout = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

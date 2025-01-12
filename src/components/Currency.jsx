@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// Currency option component
 function Currency() {
   const [selectedCurrency, setSelectedCurrency] = useState("NGN");
 

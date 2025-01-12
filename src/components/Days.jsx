@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//Days option component
 function Days() {
   const [selectedDays, setSelectedDays] = useState("NGN");
 

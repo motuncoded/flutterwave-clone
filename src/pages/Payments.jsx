@@ -82,9 +82,10 @@ Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };
 
+// Header for Payment page
 const Header = ({ onOpen, transactions, onSearch }) => {
   return (
-    <header className="flex justify-center items-center bg-[#fff] sticky top-0 left-0 z-50 w-full p-2 h-[70px] max-sm:flex max-sm:justify-between max-md:flex max-md:justify-between max-xl:flex max-xl:justify-between">
+    <header className="flex justify-center items-center bg-[#fff] sticky top-0 left-0 z-50 w-full p-2 h-[70px] max-sm:flex max-sm:justify-between max-md:flex max-md:justify-between max-xl:flex max-xl:justify-between max-sm:p-4">
       <Search transactions={transactions} onSearch={onSearch} />
       <SidebarMenu onOpen={onOpen} />
     </header>
@@ -212,10 +213,13 @@ function Payments() {
         onSearch={handleSearch}
       />
 
-      <div className="w-[calc(100% - 2rem)] max-w-full m-auto px-8 py-1 max-sm:px-[3px]">
-        <div className="flex justify-between items-center flex-wrap">
-          <h1 className="text-2xl font-semibold"> All Payments</h1>{" "}
-          <div className="my-2">
+      <div className="w-[calc(100% - 1rem)] max-w-full m-auto px-8 py-1 max-sm:px-[3px]">
+        <div className="flex justify-between items-center flex-wrap mb-4">
+          <h1 className="text-2xl font-semibold py-2 max-sm:px-2">
+            {" "}
+            All Payments
+          </h1>{" "}
+          <div className=" max-sm:px-2 flex justify-center items-center">
             <button
               className="mr-2  rounded-md bg-[#121212]  hover:bg-accentOrange  text-background px-4 py-2 "
               onClick={() => handleFilterStatus("Success")}

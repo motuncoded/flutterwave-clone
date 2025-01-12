@@ -1,3 +1,5 @@
+//  the overview account component in the dashboard page
+
 const OverviewAccount = () => {
   return (
     <div className="py-[22px] px-[14px] bg-[#FFF6E9] w-full ">

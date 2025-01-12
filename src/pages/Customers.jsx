@@ -81,9 +81,10 @@ Search.propTypes = {
   onSearch: PropTypes.func.isRequired,
 };
 
+//Header page for transaction
 const Header = ({ onOpen, transactions, onSearch }) => {
   return (
-    <header className="flex justify-center items-center bg-[#fff] sticky top-0 left-0 z-50 w-full p-2 h-[70px] max-sm:flex max-sm:justify-between max-md:flex max-md:justify-between max-xl:flex max-xl:justify-between">
+    <header className="flex justify-center items-center bg-[#fff] sticky top-0 left-0 z-50 w-full p-2 h-[70px] max-sm:flex max-sm:justify-between max-md:flex max-md:justify-between max-xl:flex max-xl:justify-between max-sm:p-4">
       <Search transactions={transactions} onSearch={onSearch} />
       <SidebarMenu onOpen={onOpen} />
     </header>
@@ -98,7 +99,7 @@ Header.propTypes = {
 
 const CustomersTable = ({ currentRows }) => {
   return (
-    <div className="mt-6 max-md:mt-3 max-sm:mt-3">
+    <div className="mt-4 max-md:mt-3 max-sm:mt-3">
       <table className="w-full rounded-xl">
         <thead>
           <tr className="bg-gray-100 ">
@@ -174,8 +175,11 @@ function Customers() {
         onSearch={handleSearch}
       />
 
-      <div className="w-[calc(100% - 2rem)] max-w-full m-auto px-8 py-1 max-sm:px-[1px] max-sm:mx-2">
-        <h1 className="text-2xl font-semibold py-4"> All customers</h1>{" "}
+      <div className="w-[calc(100% - 1rem)] max-w-full m-auto px-6 py-1 max-sm:px-[3px]">
+        <h1 className="text-2xl font-semibold py-2 max-sm:px-3">
+          {" "}
+          All customers
+        </h1>{" "}
         <CustomersTable currentRows={currentRows} />
         <div className="flex justify-between items-center mt-4 ">
           <button

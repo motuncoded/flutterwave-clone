@@ -43,6 +43,7 @@ const OnboardingForm = () => {
     }));
   };
 
+  //validate
   const validate = () => {
     const newErrors = {};
 
@@ -128,7 +129,7 @@ const OnboardingForm = () => {
   };
 
   return (
-    <section className="mx-auto max-w-[560px] p-[32px] pt-[32px] pb-[100px] w-full">
+    <section className="mx-auto max-w-xl p-[32px] pt-[32px] pb-[100px] w-full">
       <div className="">
         <h1 className=" mb-2 text-[2em] font-semibold">Confirm your details</h1>
       </div>

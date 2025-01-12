@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
+// sidebar mobile view for dashboard
 const SidebarMobile = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState(null);
   const [merchantID, setMerchantID] = useState("");
@@ -86,7 +87,9 @@ const SidebarMobile = ({ isOpen, onClose }) => {
               <NavLink
                 to={item.to}
                 className={({ isActive }) =>
-                  isActive ? "" : "text-[#121212] hover:text-accentOrange"
+                  isActive
+                    ? "text-accentOrange  "
+                    : "text-[#121212] hover:text-accentOrange"
                 }
               >
                 {item.name}

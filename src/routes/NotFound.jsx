@@ -26,6 +26,8 @@ const Header = () => {
     </header>
   );
 };
+
+// Not found page
 const NotFoundContent = () => {
   const navigate = useNavigate();
 

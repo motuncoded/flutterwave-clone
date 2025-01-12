@@ -27,7 +27,7 @@ const Search = ({ transactions, onSearch }) => {
   const handleBlur = () => setTimeout(() => setIsFocused(false), 200);
 
   return (
-    <form className="w-[600px] p-2 border-2 border-[#f2f2f2] rounded-sm max-sm:w-3/4">
+    <form className="w-[600px] p-2 border-2 border-[#f2f2f2] rounded-sm max-sm:w-3/4 max-xl:w-3/4">
       <label htmlFor="search" className="sr-only">
         Search
       </label>
@@ -46,7 +46,7 @@ const Search = ({ transactions, onSearch }) => {
         />
       </div>
       {isFocused && (
-        <div className="mt-4 absolute bg-white  border border-gray-200 rounded shadow-md z-10 max-sm:w-2/3">
+        <div className="mt-4 absolute bg-white  border w-[600px] border-gray-200 rounded shadow-md z-10 max-sm:w-2/3 max-lg:w-2/3  max-xl:w-2/3">
           {filteredData.length > 0 ? (
             filteredData.map((item, index) => (
               <table key={index} className="w-full">
@@ -83,7 +83,7 @@ Search.propTypes = {
 
 const Header = ({ onOpen, transactions, onSearch }) => {
   return (
-    <header className="flex justify-center items-center bg-[#fff] sticky top-0 left-0 z-50 w-full p-2 h-[70px] max-sm:flex max-sm:justify-between max-md:flex max-md:justify-between max-xl:flex max-xl:justify-between">
+    <header className="flex justify-center items-center bg-[#fff] sticky top-0 left-0 z-50 w-full p-2 h-[70px] max-sm:flex max-sm:justify-between max-md:flex max-md:justify-between max-xl:flex max-xl:justify-between max-sm:p-4 ">
       <Search transactions={transactions} onSearch={onSearch} />
       <SidebarMenu onOpen={onOpen} />
     </header>
@@ -98,7 +98,7 @@ Header.propTypes = {
 
 const TransactionsTable = ({ currentRows }) => {
   return (
-    <div className="mt-6  max-md:mt-3 max-sm:mt-3">
+    <div className="mt-4  max-md:mt-3 max-sm:mt-3">
       <table className="w-full rounded-xl">
         <thead>
           <tr className="bg-gray-100 text-left">
@@ -195,8 +195,11 @@ function Transactions() {
         onSearch={handleSearch}
       />
 
-      <div className="w-[calc(100% - 2rem)] max-w-full m-auto px-8 py-1 max-sm:px-[3px] ">
-        <h1 className="text-2xl font-semibold py-2"> All transactions</h1>{" "}
+      <div className="w-[calc(100% - 1rem)] max-w-full m-auto px-8 py-1 max-sm:px-[3px] ">
+        <h1 className="text-2xl font-semibold py-2 max-sm:px-3">
+          {" "}
+          All transactions
+        </h1>{" "}
         <TransactionsTable currentRows={currentRows} />
         <div className="flex justify-between items-center mt-4">
           <button

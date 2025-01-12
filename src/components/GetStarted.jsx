@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+// Get started page for the Dashboard homepage
 const StartedCards = () => {
   const datas = [
     {
@@ -62,8 +64,8 @@ const GetStarted = () => {
 
   return (
     <section className={`px-4 py-6 ${isCancel ? "none" : ""}  `}>
-      <div className="flex justify-between px-2 py-4">
-        <h2 className="font-bold text-xl">Let&apos;s get you started</h2>
+      <div className="flex justify-between  py-4 ">
+        <h2 className="font-bold text-xl ">Let&apos;s get you started</h2>
         <button type="submit" onClick={handleCancel} aria-label="Cancel">
           <img src="/cancel.svg" alt="cancel-icon" />
         </button>

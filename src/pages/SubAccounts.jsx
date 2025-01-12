@@ -1,13 +1,13 @@
 import SidebarMobile from "../components/SidebarMobile";
 import { useState } from "react";
 import Header from "../components/Header";
-
+// Subaccount page
 const SubAccount = () => {
   const data = ["USD", "NGN", "KES", "GHS", "UGX", "TZS", "ZAR"];
   return (
     <div className="w-1/2 max-sm:w-full">
       {data.map((item, index) => (
-        <div key={index} className="my-6 ">
+        <div key={index} className="my-2 ">
           <h2 className="border-b-2 text-xl font-semibold mb-4">{item}</h2>
           <div className="flex flex-col">
             <div className="flex justify-between">
@@ -35,11 +35,11 @@ function SubAccounts() {
   const handleOpen = () => setIsSidebarOpen(true);
   const handleClose = () => setIsSidebarOpen(false);
   return (
-    <div className="px-6 max-sm:px-2">
+    <div className="px-6  max-sm:px-0">
       <Header onOpen={handleOpen} />
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center max-sm:px-4 ">
         {" "}
-        <h1 className="text-xl font-semibold py-2">Overview</h1>
+        <h1 className="text-2xl font-semibold py-2">Overview</h1>
         <button
           className=" btn-primary py-[6px] px-[14px] rounded-sm my-8 bg-accentOrange "
           disabled
@@ -49,7 +49,7 @@ function SubAccounts() {
         </button>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col  max-sm:px-4">
         <SubAccount />
       </div>
       <SidebarMobile isOpen={isSidebarOpen} onClose={handleClose} />

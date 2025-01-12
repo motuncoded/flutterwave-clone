@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import SidebarMobile from "./SidebarMobile";
 
+// sidebar menu for the sidebar
 const SidebarMenu = ({ isOpen, onOpen, onClose }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

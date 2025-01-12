@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import SidebarMobile from "../components/SidebarMobile";
 import Header from "../components/Header";
+
+// Store page
 function StoreContainer() {
   const data = [
     {
@@ -44,9 +46,9 @@ function StoreContainer() {
   ];
 
   return (
-    <div className="w-1/2 max-sm:w-full">
+    <div className="w-1/2 max-sm:w-full max-sm:px-4 ">
       {data.map((item, index) => (
-        <div key={index} className="my-6 w-1/2 max-sm:w-full">
+        <div key={index} className="my-2 w-1/2 max-sm:w-full">
           <h2 className=" text-xl font-semibold mb-4 border-b-2">
             {item.label}
           </h2>
@@ -69,11 +71,11 @@ function Store() {
   const handleClose = () => setIsSidebarOpen(false);
 
   return (
-    <div className="flex flex-col px-4">
+    <div className="flex flex-col px-4 max-sm:px-0">
       <Header onOpen={handleOpen} />
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center max-sm:px-4">
         {" "}
-        <h1 className="text-xl font-semibold py-2">All stores</h1>
+        <h1 className="text-2xl font-semibold py-2">All stores</h1>
         <button
           className=" btn-primary py-[6px] px-[14px] rounded-sm my-8 bg-accentOrange "
           disabled

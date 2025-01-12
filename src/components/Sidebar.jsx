@@ -1,5 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+
+// the sidebar component  view for Desktop in the dashboard
 const Sidebar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [formData, setFormData] = useState(null);

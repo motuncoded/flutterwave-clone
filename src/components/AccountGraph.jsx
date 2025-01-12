@@ -1,3 +1,5 @@
+// Account graph in the dashboard
+
 import {
   BarChart,
   CartesianGrid,
@@ -28,10 +30,10 @@ function AccountGraph() {
       <BarChart
         height={350}
         data={filteredData}
-        barSize={30}
+        barSize={40}
         margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
       >
-        <CartesianGrid />
+        <CartesianGrid vertical={false} />
         <XAxis
           dataKey="date"
           tickFormatter={(tick) => {

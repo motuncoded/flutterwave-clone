@@ -18,7 +18,7 @@ const Search = ({ data }) => {
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setTimeout(() => setIsFocused(false), 200);
   return (
-    <form className="w-[600px] p-2 border-2 border-[#f2f2f2] rounded-sm max-sm:w-3/4">
+    <form className="w-[600px] p-2 border-2 border-[#f2f2f2] rounded-sm max-sm:w-3/4 max-xl:w-3/4">
       <label htmlFor="search" className="sr-only">
         Search
       </label>
@@ -32,12 +32,12 @@ const Search = ({ data }) => {
           onChange={handleSearchChange}
           onFocus={handleFocus}
           onBlur={handleBlur} // Delay to allow click on dropdown
-          className="ml-2 bg-inherit outline-none"
+          className="ml-2 bg-inherit outline-none w-full"
           autoComplete="off"
         />
       </div>
       {isFocused && (
-        <ul className="mt-4 absolute bg-background w-[calc(600px-1rem)] ">
+        <ul className="mt-4 absolute w-[600px]  bg-white  border border-gray-200 rounded shadow-md z-10 max-sm:w-2/3 max-lg:w-2/3  max-xl:w-2/3">
           {filteredData.length > 0 ? (
             filteredData.map((item, index) => (
               <li key={index} className="p-2 hover:bg-gray-100 cursor-pointer">

@@ -56,6 +56,7 @@ const Header = () => {
   );
 };
 
+// Details component for the Register page
 function Details() {
   return (
     <div>

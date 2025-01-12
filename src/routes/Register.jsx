@@ -96,8 +96,8 @@ const AccountType = ({
     </div>
   );
 };
-
-const AccountSetup = () => {
+// Register page
+const Register = () => {
   const [country, setCountry] = useState("");
   const [accountType, setAccountType] = useState("");
   const [errors, setErrors] = useState({});
@@ -152,7 +152,7 @@ const AccountSetup = () => {
       <Header />
 
       <div className="flex items-center justify-center py-8 px-4 max-sm:px-1">
-        <form className="w-1/3 max-sm:w-10/12 max-md:w-10/12 max-xl:w-8/12">
+        <form className="w-1/3 max-sm:w-11/12 max-md:w-10/12 max-lg:w-8/12 max-xl:w-6/12">
           <h1 className="text-2xl font-bold">
             What type of account would you like to create?
           </h1>
@@ -256,4 +256,4 @@ AccountType.propTypes = {
   onSelect: PropTypes.func.isRequired,
 };
 
-export default AccountSetup;
+export default Register;
