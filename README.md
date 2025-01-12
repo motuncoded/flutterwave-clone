@@ -53,7 +53,7 @@ Here’s what makes Flutterwave Clone stand out:
 
 - **Frontend Frameworks:** Reactjs
 - **CSS Frameworks:** Tailwind CSS,
-- **Chart Libraries:** Chart.js, Recharts, ApexCharts
+- **Chart Libraries:** Recharts
 - **Version Control:** GitHub for sharing your project repository
 - **Deployment:** Vercel
 
